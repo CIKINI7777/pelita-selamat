@@ -1,0 +1,8 @@
+{
+  "name": "Pelita Selamat",
+  "short_name": "Pelita",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0066cc"
+}
