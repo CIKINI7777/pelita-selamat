@@ -1,0 +1,10 @@
+pelita-selamat/          <-- Folder Utama
+├── index.html           <-- File HTML utama
+├── manifest.json        <-- Konfigurasi PWA
+├── sw.js                <-- Service Worker (otak offline)
+├── css/                 <-- Folder styling
+│   └── style.css        <-- File CSS (kosong dulu)
+├── js/                  <-- Folder logika
+│   └── core.js          <-- File JS utama (kosong dulu)
+└── data/                <-- Folder data
+    └── landmarks.json   <-- Data titik kumpul (kosong dulu)
