@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pelita Selamat</title>
+    <!-- Hubungkan ke Manifest & CSS -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="theme-color" content="#0056b3">
+</head>
+<body>
+
+    <!-- LAYAR 1: MODE SIAGA (Tampilan Awal) -->
+    <div id="siaga-screen">
+        <header>
+            <h1>🕯️ PELITA SELAMAT</h1>
+            <p>Sistem Peringatan Dini & Evakuasi</p>
+        </header>
+        
+        <main>
+            <!-- Kotak Peringatan (Tersembunyi Awalnya) -->
+            <div id="alert-box" class="alert-box">
+                <div class="alert-title" id="alert-title"></div>
+                <div id="alert-desc"></div>
+            </div>
+            
+            <!-- Tombol Aksi -->
+            <button class="btn btn-danger" onclick="toggleMode()">🚨 AKTIFKAN MODE EVAKUASI</button>
+            <button class="btn btn-secondary" id="btn-test">🔔 Simulasi Peringatan</button>
+            
+            <div style="margin-top: 40px; font-size: 12px; opacity: 0.6;">
+                <p>Status Sistem: <span style="color:green">ONLINE & SIAGA</span></p>
+                <p>Versi: 1.0.0 | Offline-Ready</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- LAYAR 2: MODE DARURAT (Tampilan Saat Bahaya) -->
+    <div id="darurat-screen" style="display:none; flex-direction:column; align-items:center; justify-content:center; min-height:100vh;">
+        <h1 style="font-size: 28px; margin-bottom: 10px;">⚠️ MODE DARURAT</h1>
+        <p>Ikuti arah panah menuju titik kumpul</p>
+        
+        <!-- Kompas Visual -->
+        <div class="compass-container">
+            <div id="arrow"></div>
+        </div>
+        <p style="margin-top: -20px; font-size: 14px;">Arah Utara / Target</p>
+        
+        <!-- Tombol Kembali -->
+        <button class="btn btn-secondary" onclick="toggleMode()" style="margin-top:40px; width: 80%;">⬅️ KEMBALI KE MODE SIAGA</button>
+    </div>
+
+    <!-- Hubungkan ke JavaScript -->
+    <script src="/js/core.js"></script>
+    
+    <!-- DAFTARKAN SERVICE WORKER (Agar Bisa Offline) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker Terdaftar:', reg))
+                    .catch(err => console.log('Gagal Daftar SW:', err));
+            });
+        }
+    </script>
+</body>
+</html>
